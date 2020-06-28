@@ -1,4 +1,5 @@
 from pygame.sprite import Sprite
+from ..doodle import Doodle
 from .platform import Platform
 
 
@@ -10,3 +11,6 @@ class Spring(Sprite):
         super().__init__()
         self.platform = platform
         self.coiled = True
+
+    def interact(self, doodle: Doodle):
+        pass
