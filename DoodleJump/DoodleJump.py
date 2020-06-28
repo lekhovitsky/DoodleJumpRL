@@ -7,7 +7,7 @@ from .doodle import Doodle
 
 
 class DoodleJump:
-    RESOLUTION: Tuple[int, int] = (800, 600)
+    RESOLUTION: Tuple[int, int] = (600, 800)
 
     score: int
 
@@ -34,7 +34,14 @@ class DoodleJump:
             obj.interact(self.doodle)
 
     def render(self):
-        pass
+        white = (255, 255, 255)
+        self.screen.fill(white)
+
+        source = self.doodle.surf
+        dest = (self.doodle.location[0], self.RESOLUTION[0] - self.doodle.location[1])
+        self.screen.blit(source, dest)
+
+        pygame.display.flip()
 
     def get_screen(self):
         pass
@@ -60,7 +67,3 @@ class DoodleJump:
                 running = False
 
         print(f"Final score = {game.score}")
-
-
-if __name__ == "__main__":
-    DoodleJump.play_game()

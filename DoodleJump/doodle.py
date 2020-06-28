@@ -1,5 +1,9 @@
+import os.path
 from typing import Tuple
 import pygame
+
+ASSETS_DIR = os.path.join(
+    os.path.dirname(__file__), 'assets')
 
 
 class Doodle(pygame.sprite.Sprite):
@@ -9,14 +13,15 @@ class Doodle(pygame.sprite.Sprite):
     acceleration: Tuple[float, float]
 
     images = {
-        'left_up': pygame.image.load('../assets/left_up.png'),
-        'left_down': pygame.image.load('../assets/left_down.png'),
-        'right_up': pygame.image.load('../assets/right_up.png'),
-        'right_down': pygame.image.load('../assets/right_down.png')
+        'left_up': pygame.image.load(os.path.join(ASSETS_DIR, 'left_up.png')),
+        'left_down': pygame.image.load(os.path.join(ASSETS_DIR, 'left_down.png')),
+        'right_up': pygame.image.load(os.path.join(ASSETS_DIR, 'right_up.png')),
+        'right_down': pygame.image.load(os.path.join(ASSETS_DIR, 'right_down.png'))
     }
 
     def __init__(self, location: Tuple[float, float]):
         super().__init__()
+        self.location = location
         self.surf = self.images['right_down']
         self.rect = self.surf.get_rect(
             center=location

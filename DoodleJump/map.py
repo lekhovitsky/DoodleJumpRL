@@ -1,6 +1,6 @@
 from typing import Tuple
 from pygame.sprite import Group
-from DoodleJump.objects import *
+from .objects import *
 
 
 class Map:
@@ -10,9 +10,10 @@ class Map:
 
     def __init__(self, resolution: Tuple[int, int]):
         self.resolution = resolution
+        self.reset()
 
     def update(self):
         pass
 
     def reset(self):
-        pass
+        self.objects = Group()
